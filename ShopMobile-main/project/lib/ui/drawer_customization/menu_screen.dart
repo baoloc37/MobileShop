@@ -5,6 +5,7 @@ import 'package:project/providers/cart_provider.dart';
 import 'package:project/providers/products_provider.dart';
 import 'package:project/providers/users_provider.dart';
 import 'package:project/ui/account_management/profile_screen.dart';
+import 'package:project/ui/authentication/login_screen.dart';
 import 'package:project/ui/cart/cart_screen.dart';
 import 'package:project/ui/favorites/favorites_screen.dart';
 import 'package:project/ui/home/home_screen.dart';
@@ -46,6 +47,8 @@ class MenuScreenState extends State<MenuScreen> {
       container = ProfileScreen();
     } else if (currentPage == DrawerSections.about) {
       container = ProfileScreen();
+    } else if (currentPage == DrawerSections.logout) {
+      container = LoginScreen();
     }
 
     return Scaffold(
@@ -66,7 +69,7 @@ class MenuScreenState extends State<MenuScreen> {
                   CupertinoIcons.xmark,
                   color: Colors.black,
                 ),
-                width: (size.width - 65) > 0 ? size.width - 65 : 150,
+                width: size.width - 65,
                 textController: textController,
                 rtl: true,
                 onSuffixTap: () {
@@ -151,7 +154,6 @@ class MenuScreenState extends State<MenuScreen> {
           //     ))
         ],
       ),
-
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Container(
@@ -203,6 +205,9 @@ class MenuScreenState extends State<MenuScreen> {
               currentPage == DrawerSections.settings ? true : false),
           menuItem(6, "About", CupertinoIcons.info_circle,
               currentPage == DrawerSections.about ? true : false),
+          Divider(),
+          menuItem(7, "Logout", CupertinoIcons.escape,
+              currentPage == DrawerSections.logout ? true : false),
         ],
       ),
     );
@@ -229,6 +234,8 @@ class MenuScreenState extends State<MenuScreen> {
               currentPage = DrawerSections.settings;
             } else if (id == 6) {
               currentPage = DrawerSections.about;
+            } else if (id == 7) {
+              currentPage = DrawerSections.logout;
             }
           });
         },
@@ -268,4 +275,5 @@ enum DrawerSections {
   favorite,
   settings,
   about,
+  logout,
 }

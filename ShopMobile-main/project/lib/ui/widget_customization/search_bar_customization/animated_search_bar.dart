@@ -60,7 +60,6 @@ class AnimatedSearchBar extends StatefulWidget {
 
     /// handle search after click button on keyboard
     this.onSubmitted,
-
     this.onChanged,
 
     /// TextStyle of the contents inside the searchbar
@@ -77,7 +76,7 @@ class AnimatedSearchBar extends StatefulWidget {
   _AnimatedSearchBarState createState() => _AnimatedSearchBarState();
 }
 
-///toggle - 0 => false or closed
+///toggle 0 => false or closed
 ///toggle 1 => true or open
 int toggle = 0;
 
@@ -176,14 +175,14 @@ class _AnimatedSearchBarState extends State<AnimatedSearchBar>
                       child: widget.suffixIcon != null
                           ? widget.suffixIcon
                           : Icon(
-                        Icons.close,
-                        size: 20.0,
-                      ),
+                              Icons.close,
+                              size: 20.0,
+                            ),
                     ),
                     builder: (context, widget) {
                       ///Using Transform.rotate to rotate the suffix icon when it gets expanded
                       return Transform.rotate(
-                        angle: _con.value * 2.0 * pi,
+                        angle: _con.value * pi,
                         child: widget,
                       );
                     },
@@ -194,18 +193,20 @@ class _AnimatedSearchBarState extends State<AnimatedSearchBar>
             ),
             AnimatedPositioned(
               duration: Duration(milliseconds: widget.animationDurationInMilli),
+              //Show left mouse cursor position
               left: (toggle == 0) ? 20.0 : 40.0,
               curve: Curves.easeOut,
-              top: 11.0,
+              top: 10.0,
 
-              ///Using Animated opacity to change the opacity of th textField while expanding
+              ///Using Animated opacity to change the opacity of the textField while expanding
               child: AnimatedOpacity(
                 opacity: (toggle == 0) ? 0.0 : 1.0,
                 duration: Duration(milliseconds: 200),
                 child: Container(
                   padding: const EdgeInsets.only(left: 10),
                   alignment: Alignment.topCenter,
-                  width: widget.width / 1.7,
+                  //Character display area in search bar
+                  width: widget.width / 1.4,
                   child: TextField(
                     ///Text Controller. you can manipulate the text inside this textField by calling this controller.
                     controller: widget.textController,
@@ -262,16 +263,18 @@ class _AnimatedSearchBarState extends State<AnimatedSearchBar>
                 ///prefixIcon is of type Icon
                 icon: widget.prefixIcon != null
                     ? toggle == 1
-                    ? Icon(CupertinoIcons.chevron_right, color: Colors.black)
-                    : widget.prefixIcon!
+                        ? Icon(CupertinoIcons.chevron_right,
+                            color: Colors.black)
+                        : widget.prefixIcon!
                     : Icon(
-                    toggle == 1 ? CupertinoIcons.chevron_right : Icons.search,
-                    size: 15.0,
-                    color:Colors.black
-                ),
+                        toggle == 1
+                            ? CupertinoIcons.chevron_right
+                            : Icons.search,
+                        size: 15.0,
+                        color: Colors.black),
                 onPressed: () {
                   setState(
-                        () {
+                    () {
                       ///if the search bar is closed
                       if (toggle == 0) {
                         toggle = 1;

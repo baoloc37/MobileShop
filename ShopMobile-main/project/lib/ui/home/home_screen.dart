@@ -17,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   bool isGridMode = true;
 
   @override
@@ -38,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         dotSize: 4.0,
         indicatorBgPadding: 0,
         // animationCurve: Curves.linear,
-        // animationDuration: Duration(microseconds: 3000),
+        // animationDuration: Duration(microseconds: 2500),
       ),
     );
 

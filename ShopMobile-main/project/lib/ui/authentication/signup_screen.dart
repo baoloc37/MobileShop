@@ -65,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       //validator
       validator: (text) {
         if (text!.isEmpty) {
-          return 'Enter an email';
+          return 'Enter your email';
         } else if (!RegExp(
                 r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)')
             .hasMatch(text)) {
@@ -109,7 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final dropDownButtonGender = DropdownButton(
       icon: Icon(
         CupertinoIcons.chevron_down,
-        size: 18,
+        size: 20,
       ),
       value: _gender,
       onChanged: (String? newValue) {
@@ -214,9 +214,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 formKey.currentState!.save();
                 if (!userData.checkExistEmail(mailEditingController.text)) {
                   userData.addUser(User(
-                    idUser: 100,
+                    idUser: 10,
                     userName: nameEditingController.text,
-                    gender: _gender=='Male' ? false : true,
+                    gender: _gender == 'Male' ? false : true,
                     avatarPath: 'assets/avatar_test2.png',
                     password: passwordEditingController.text,
                     //address: '',
@@ -387,7 +387,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Text('Gender',
                               style:
                                   TextStyle(fontSize: 16, color: Colors.grey)),
-                          SizedBox(width: 60),
+                          SizedBox(width: 50),
                           dropDownButtonGender,
                         ],
                       ),

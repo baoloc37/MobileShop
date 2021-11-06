@@ -10,8 +10,8 @@ class UserProvider with ChangeNotifier {
   List<User> _listUser = [
     User(
       idUser: 01,
-      userName: 'Tran Linh',
-      email: 'linhtranttdl@gmail.com',
+      userName: 'Test User 1',
+      email: 'test1@gmail.com',
       password: '123456789',
       address: 'Da Nang',
       gender: true,
@@ -22,9 +22,9 @@ class UserProvider with ChangeNotifier {
     ),
     User(
       idUser: 02,
-      userName: 'Test User 1',
+      userName: 'Test User 2',
       password: '123456789',
-      email: 'test1@gmail.com',
+      email: 'test2@gmail.com',
       address: 'Hue',
       gender: false,
       dateOfBirth:
@@ -34,9 +34,9 @@ class UserProvider with ChangeNotifier {
     ),
     User(
       idUser: 03,
-      userName: 'Test User 2',
+      userName: 'Test User 3',
       password: '123456789',
-      email: 'test2@gmail.com',
+      email: 'test3@gmail.com',
       address: 'Ha Noi',
       gender: false,
       dateOfBirth:

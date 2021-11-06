@@ -37,9 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
       //validator
       validator: (text) {
         if (text!.isEmpty) {
-          return 'Enter an email';
+          return 'Enter your email';
         } else if (!RegExp(
-            r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)')
+                r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)')
             .hasMatch(text)) {
           return 'Enter a valid email';
         } else {
@@ -53,8 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
           prefixIcon: Icon(Icons.mail),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
-          border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
     );
 
     //password field
@@ -65,8 +64,10 @@ class _LoginScreenState extends State<LoginScreen> {
       obscureText: obscureText,
       //validator
       validator: (text) {
-        if (text!.length < 6) {
-          return 'Password must be at least 6 characters long';
+        if (text!.isEmpty) {
+          return 'Enter your password';
+        } else if (text.length < 6) {
+          return 'Enter at least 6 characters';
         } else {
           return null;
         }
@@ -111,8 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mailController.text, passwordController.text)) {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MenuScreen()));
-                }
-                else {
+                } else {
                   showDialog(
                       context: context,
                       builder: (context) {
@@ -122,8 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: TextStyle(fontSize: 18),
                           ),
                           content: Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
                                 CupertinoIcons.xmark_shield,
@@ -149,15 +148,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 },
                                 color: Colors.red,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.circular(
-                                        10)),
+                                    borderRadius: BorderRadius.circular(10)),
                                 child: Text(
                                   "OK",
                                   style: TextStyle(
                                       fontSize: 18,
-                                      fontWeight:
-                                      FontWeight.w600,
+                                      fontWeight: FontWeight.w600,
                                       color: Colors.white),
                                 )),
                           ],
