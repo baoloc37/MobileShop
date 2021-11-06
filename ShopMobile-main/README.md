@@ -13,3 +13,6 @@ Feature:
  + Filter by Category:      DONE
  + See all product:         DONE
  + Sort price:              DONE
+ + Login:                   DONE
+ + Singup:                  DONE
+ + Logout:                  DONE
