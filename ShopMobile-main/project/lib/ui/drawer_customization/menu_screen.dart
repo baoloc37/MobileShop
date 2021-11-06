@@ -69,7 +69,7 @@ class MenuScreenState extends State<MenuScreen> {
                   CupertinoIcons.xmark,
                   color: Colors.black,
                 ),
-                width: size.width - 65,
+                width: (size.width - 65) > 0 ? size.width - 65 : 150,
                 textController: textController,
                 rtl: true,
                 onSuffixTap: () {
@@ -235,7 +235,8 @@ class MenuScreenState extends State<MenuScreen> {
             } else if (id == 6) {
               currentPage = DrawerSections.about;
             } else if (id == 7) {
-              currentPage = DrawerSections.logout;
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => LoginScreen()));
             }
           });
         },
